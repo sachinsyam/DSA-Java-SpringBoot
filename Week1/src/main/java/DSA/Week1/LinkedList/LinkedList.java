@@ -119,4 +119,24 @@ public class LinkedList {
         size++;
     }
 
+    public void reverse(){
+        Node prevNode = null;
+        Node currentNode = head;
+        Node nextNode = null;
+
+        while (currentNode != null){
+            nextNode = currentNode.next;
+            currentNode.next = prevNode;
+            prevNode = currentNode;
+            currentNode = nextNode;
+        }
+        head= prevNode;
+    }
+
+    public void convertArrayToLinkedList(int [] arr){
+        for(int n:arr){
+            insertFirst(n);
+        }
+    }
+
 }
