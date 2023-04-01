@@ -122,16 +122,24 @@ public class LinkedList {
     public int insertBeforeX(int key, int val){
         Node temp = head;
         int pos=0;
-        while(temp != null){
-            if(temp.next.value == key){
-                Node newNode = new Node(val,temp.next);
-                temp.next =newNode;
-                size++;
-                return pos;
-            }
-            temp = temp.next;
-            pos++;
+        if(head.value == key){
+            Node newNode = new Node(val,head);
+            head = newNode;
+            return 0;
         }
+        else{
+            while(temp != null){
+                if(temp.next.value == key){
+                    Node newNode = new Node(val,temp.next);
+                    temp.next =newNode;
+                    size++;
+                    return pos;
+                }
+                temp = temp.next;
+                pos++;
+            }
+        }
+
         return -1; //not found
     }
 
@@ -155,6 +163,7 @@ public class LinkedList {
         Node prevNode = null;
         Node currentNode = head;
         Node nextNode = null;
+        tail = head;
 
         while (currentNode != null){
             nextNode = currentNode.next;
