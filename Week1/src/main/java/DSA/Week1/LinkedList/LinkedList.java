@@ -119,6 +119,38 @@ public class LinkedList {
         size++;
     }
 
+    public int insertBeforeX(int key, int val){
+        Node temp = head;
+        int pos=0;
+        while(temp != null){
+            if(temp.next.value == key){
+                Node newNode = new Node(val,temp.next);
+                temp.next =newNode;
+                size++;
+                return pos;
+            }
+            temp = temp.next;
+            pos++;
+        }
+        return -1; //not found
+    }
+
+    public int insertAfterX(int key, int val){
+        Node temp = head;
+        int pos = 0;
+        while(temp != null){
+            if (temp.value == key){
+                Node newNode = new Node(val, temp.next);
+                temp.next = newNode;
+                size++;
+                return pos;
+            }
+            temp = temp.next;
+            pos++;
+        }
+        return  -1;
+    }
+
     public void reverse(){
         Node prevNode = null;
         Node currentNode = head;
